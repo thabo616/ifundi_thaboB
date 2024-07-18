@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="../static/images/products/aru.png">
+    <title>Products - Appliance R us</title>
+    <meta charset="utf-8" />
+    <meta name="viewpoint" content="width=device-width,initial-scal=1.0">
+    <meta http-equip="X-UA-compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/style.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/jquery.store.js"></script>
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR -->
+
+    <section id="nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="topnav">
+                <a style="color:black;" class="active" href="/"><img src="../static/images/products/blApplianceRus_bla_70.jpg" alt="Index"
+                    width="100" height="26"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a style="color:black;" class="nav-link" href="../cart/">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="color:black;" class="nav-link" href="../about/">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="color:black;" class="nav-link" href="../contact/">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="color:black;" class="nav-link" href="../login/">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section> <!--added-->
+
+<!-- SLIDER -->
+
+<!-- NEW ARIVALS FILTER -->
+
+        <section class="new-arrivals">
+            <div id="site">
+                <div class="container">
+                    <ul class="filter-menu">
+                        <li data-target="Reset" style="background-color: #3f48cc;">Reset</li>
+                        <li data-target="Laptop" style="background-color: #3f48cc;">Laptop</li>
+                        <li data-target="Camera" style="background-color: #3f48cc;">Camera</li>
+                        <li data-target="Television" style="background-color: #3f48cc;">Television</li>
+                        <li data-target="Cellphones" style="background-color: #3f48cc;">Cellphones</li>
+                    </ul>
+                    <div id='content'>
+                        <div class="row">
+                            {% for product in products %}
+                            <div class="product col-md-3" data-item="{{product.productscat.productcategory}}">
+                                <div class="product-top">
+                                    <img src='../static/images{{product.productsimg}}'>
+                                    <div class='+'"'+'overlay-right'+'"'+'>
+                                        <button type="button" class="btn btn-secondary" style="background-color: #3f48cc;" title="Quick Shop">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+
+                                        <button type="button" class="btn btn-secondary" style="background-color: #3f48cc;" title="Add to Wishlist">
+                                            <i class="fa fa-heart-o"></i>
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                                <div class="product-bottom text-center">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                    <h3 style="font-family:Poppins; font-size: 18px;">{{product.productsdescription}}</h3>
+                                    <div class="product-description" data-name={{product.productsname}} data-price= {{product.productsprice}} data-prodid={{product.idproducts}}>
+                                        <p class="product-price" style="font-size: 16px">R{{product.productsprice}}</p>
+                                        <form class=add-to-cart action="../cart/" method="post">
+                                            <div>
+                                                <label for="qty-2">Quantity</label>
+                                                <input type="text" name="qty-2" id="qty-2" class="qty" value="1" />
+                                            </div>
+                                            <p><input type="submit" style="background-color: #3f48cc;" value="Add to cart" class="btn" /></p>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                                    {% if forloop.counter|divisibleby:4 %} 
+                        </div>
+                        <div class="row">
+                            {% endif %}
+                            {% endfor %}
+                        </div>   
+                    </div>
+                </div> <!---added-->
+            </div>
+        </section>
+
+<!-- FOOTER-->
+
+        <section id="footer" style="margin-top: 40px; background-color: #3f48cc; padding-top: 30px;">
+            <footer class="container">
+                <div class="footer-middle">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-s6 col-lg-3">
+                                <div class="widget widget-about">
+                                    <img src="../static/images/products/blApplianceRus_bla_70.jpg" class="footer-logo" alt="Footer Logo"
+                                    width="150" height="76">
+                                <p> </p>
+        
+                                <div class="widget-call">
+                                    <i class="icon-phone"></i>
+                                    <p>Questions? Call us 24/7</p>
+                                    
+                                    <a href="tel:#" style="color: white;"> +2711 017 9900</a>
+                                </div>
+                                </div>
+                            </div>
+          
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="widget">
+                                    <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+                                    <ul class="widget-list">
+                                        <li><a href="../about/" style="color: white;">About the Company</a></li>
+                                        <li><a href="../contact/" style="color: white;">Contact us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+          
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="widget">
+                                    <h4>Customer Service</h4>
+                                    <ul class="widget-list">
+                                    <li><a href="#" style="color: white;">Payment Methods</a></li>
+                                    <li><a href="#" style="color: white;">Money-back guarantee!</a></li>
+                                    <li><a href="#" style="color: white;">Returns</a></li>
+                                    <li><a href="#" style="color: white;">Shipping</a></li>
+                                    <li><a href="#" style="color: white;">Terms and conditions</a></li>
+                                    <li><a href="#" style="color: white;">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+          
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="widget">
+                                    <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+                                    <ul class="widget-list">
+                                    <li><a href="#" style="color: white;">Sign In</a></li>
+                                    <li><a href="cart.html" style="color: white;">View Cart</a></li>
+                                    <li><a href="#" style="color: white;">My Wishlist</a></li>
+                                    <li><a href="#" style="color: white;">Track My Order</a></li>
+                                    <li><a href="#" style="color: white;">Help</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
+                <div>
+                    <div class="container">
+                        <p style="text-align:center;">Copyright © 2002 applianceRus eStore. All Rights Reserved.</p>
+                        <figure style="float: right;">
+                            <img src="../static/images/products/payments.png" alt="Payment methods" width="272" height="20">
+                        </figure>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <script type="text/javascript" src="../static/filter.js"></script>
+
+</body>
+
+</html>
